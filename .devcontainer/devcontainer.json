@@ -3,6 +3,9 @@
 {
 	"name": "dc-test",
 	"dockerFile": "Dockerfile",
+	"build": {
+		"cacheFrom": "ghcr.io/stuartleeks/dc-test/dev-container"
+	},
 
 	"mounts": [
 		// Keep command history 
