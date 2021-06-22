@@ -30,5 +30,4 @@ jobs:
         uses: stuartleeks/devcontainer-build-run@v0.1
         with:
           imageName: ghcr.io/stuartleeks/dc-test/dev-container
-          runCmd: echo hi
-#           runCmd: bash --login -c "make docker-build"
+          runCmd: bash --login -c "make docker-build"
