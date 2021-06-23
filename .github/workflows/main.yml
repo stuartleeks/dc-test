@@ -22,7 +22,7 @@ jobs:
           echo ---
           id -u -n
           echo ---
-          cat /etc/password
+          cat /etc/passwd
           echo ---
           cat /etc/group
           
