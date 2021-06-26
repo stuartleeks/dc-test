@@ -34,7 +34,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and run dev container task
-        uses: stuartleeks/devcontainer-build-run@v0.1
+        uses: stuartleeks/devcontainer-build-run@sl/align-users
         with:
           imageName: ghcr.io/stuartleeks/dc-test/dev-container
           runCmd: bash --login -c "cat /etc/group && sudo make docker-build"
