@@ -59,12 +59,11 @@ RUN \
     # --> GolangCI-lint
     && curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sed 's/tar -/tar --no-same-owner -/g' | sh -s -- -b $(go env GOPATH)/bin
 
-# docker-client
+ARG DOCKER_GROUP_ID
+
+# docker-from-docker
 COPY scripts/docker-client.sh /tmp/
 RUN /tmp/docker-client.sh
-
-#Add user to docker group
-RUN sudo groupadd docker && sudo usermod -aG docker $USERNAME && newgrp docker
 
 # __DEVCONTAINER_SNIPPET_INSERT__ (control where snippets get inserted using the devcontainer CLI)
 
