@@ -3,19 +3,16 @@
 {
 	"name": "dc-test",
 	"dockerFile": "Dockerfile",
-
 	"mounts": [
 		// Keep command history 
 		"source=dc-test-bashhistory,target=/home/vscode/commandhistory",
 		// Mount host docker socket
 		"type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock"
-	
 	],
-
 	// Set *default* container specific settings.json values on container create.
-	"settings": { 
+	"settings": {
 		"terminal.integrated.shell.linux": "/bin/bash",
-		"files.eol": "\n", 
+		"files.eol": "\n",
 		"go.useLanguageServer": true,
 		"[go]": {
 			"editor.snippetSuggestions": "none",
@@ -43,18 +40,14 @@
 			"debugAdapter": "legacy"
 		}
 	},
-	
 	// Add the IDs of extensions you want installed when the container is created.
 	// "extensions": [],
-
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
-
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "echo hello",
-
+	"postCreateCommand": "whoami && echo post-create-command-running && ls -a /home/vscode && date > /home/vscode/postCreate.txt",
+	// "postCreateCommand": "echo post-create-command-start && sleep 30s && echo post-create-command-stop",
 	"remoteUser": "vscode",
-	
 	"extensions": [
 		"golang.go",
 		"stuartleeks.vscode-go-by-example",
@@ -67,4 +60,8 @@
 			// 		export DOCKER_GROUP_ID=$(getent group docker | awk -F ":" '{ print $3 }')
 			"DOCKER_GROUP_ID": "${localEnv:DOCKER_GROUP_ID}"
 		}
-	},}
+	},
+
+	// "workspaceFolder": "/workspace",
+	// "workspaceMount": "source=/home/stuart/tmp/dc-test,target=/workspace,type=bind,consistency=cached"
+}

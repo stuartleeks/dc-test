@@ -2,7 +2,7 @@
 set -e
 
 get_latest_release() {
-  curl --silent "https://golang.org/dl/" | grep -Po -m 1 '(\d+\.\d+\.\d+)\.linux-amd64' | sed 's/.linux-amd64//'
+  curl --silent "https://golang.org/dl/" | grep -Po -m 1 '(\d+\.\d+\.\d+)\.linux-amd64' | sed 's/.linux-amd64//' | head -n 1
 }
 
 VERSION=${1:-"$(get_latest_release)"}
@@ -13,6 +13,7 @@ NAME="Go Language"
 echo -e "\e[34m»»» 📦 \e[32mInstalling \e[33m$NAME \e[35mv$VERSION\e[0m ..."
 
 cd /tmp
+echo "Downloading https://dl.google.com/go/go${VERSION}.linux-amd64.tar.gz"
 curl -fsS https://dl.google.com/go/go${VERSION}.linux-amd64.tar.gz -o golang.tar.gz
 
 sudo tar -xvf golang.tar.gz
